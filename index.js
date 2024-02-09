@@ -19,13 +19,18 @@ addButtonEl.addEventListener("click", function() {
   push(shoppingListInDB, inputValue)
 
   clearInputFieldEl()
-
-  appendItemToShoppingListEl(inputValue) 
+  //removing this line fixes the duplication bug
+  // appendItemToShoppingListEl(inputValue) 
 })
 
 onValue(shoppingListInDB, function(snapshot) {
+  //using the Object to turn the snapshot into an array so that we can run a for loop on it
   let itemsArray = Object.values(snapshot.val())
   
+  shoppingListEl.innerHTML = ""
+
+  //new bug: duplication of last added shoppingItem
+
   for (let i = 0; i < itemsArray.length; i++) {
     appendItemToShoppingListEl(itemsArray[i])
   }
