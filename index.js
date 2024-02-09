@@ -27,7 +27,8 @@ onValue(shoppingListInDB, function(snapshot) {
   //using the Object to turn the snapshot into an array so that we can run a for loop on it
   let itemsArray = Object.values(snapshot.val())
   
-  shoppingListEl.innerHTML = ""
+  clearShoppingListEl()
+  
 
   //new bug: duplication of last added shoppingItem
 
@@ -35,6 +36,10 @@ onValue(shoppingListInDB, function(snapshot) {
     appendItemToShoppingListEl(itemsArray[i])
   }
 })
+
+function clearShoppingListEl() {
+  shoppingListEl.innerHTML = ""
+}
 
 function clearInputFieldEl() {
   inputFieldEl.value = ""
