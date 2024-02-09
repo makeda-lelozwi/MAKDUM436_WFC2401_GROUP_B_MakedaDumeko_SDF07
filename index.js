@@ -50,26 +50,24 @@ function clearInputFieldEl() {
   inputFieldEl.value = ""
 }
 
-function appendItemToShoppingListEl(itemValue) {
+function appendItemToShoppingListEl(item) {
   /* we need to refactor: 
     shoppingListEl.innerHTML += `<li>${itemValue}</li>` 
     because we can't add an event listener to each of the 
     shopping list items so we can run a function (delete) when the
     user clicks those items 
   */
+  let itemID = item[0]
+  let itemValue = item[1]
   
-  
-
-  //step 1: create a new element and specify what that elemnt must be
   let newEl = document.createElement("li")
 
-  //step 2: give the new element some text content
   newEl.textContent = itemValue
 
-  /*
-  Step 3: place the newly created element into its parent 
-  element (the shopping list element)
-  */
+  //adding the event listener 
+  newEl.addEventListener("click", function() {
+    console.log(itemID)
+  })
 
   shoppingListEl.append(newEl)
 } 
