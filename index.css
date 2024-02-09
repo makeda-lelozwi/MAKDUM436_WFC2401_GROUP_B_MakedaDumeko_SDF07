@@ -1,13 +1,9 @@
 html, body {
   margin: 0;
   padding: 0;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
   font-family: 'Rubik', sans-serif;
   background-color: #EEF0F4;
+  user-select: none;
 }
 
 .container {
@@ -45,6 +41,11 @@ button {
   font-family: 'Rubik', sans-serif;
 }
 
+button:hover {
+  background-color: #432000;
+  cursor: pointer;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -62,3 +63,8 @@ ul li {
   text-align: center;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2)
 }  
+
+ul li:hover {
+  background-color: #FFECC7;
+  cursor: pointer;
+}
