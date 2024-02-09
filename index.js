@@ -33,9 +33,12 @@ onValue(shoppingListInDB, function(snapshot) {
   //new bug: duplication of last added shoppingItem
 
   for (let i = 0; i < itemsArray.length; i++) {
-    letcurrentItem = itemsArray[i]
+    let currentItem = itemsArray[i]
 
-    appendItemToShoppingListEl(itemsArray[i])
+    let currentItemID = currentItem[0]
+    let currentItemValue = currentItem[1]
+
+    appendItemToShoppingListEl(currentItem)
   }
 })
 
@@ -48,5 +51,25 @@ function clearInputFieldEl() {
 }
 
 function appendItemToShoppingListEl(itemValue) {
-  shoppingListEl.innerHTML += `<li>${itemValue}</li>`
+  /* we need to refactor: 
+    shoppingListEl.innerHTML += `<li>${itemValue}</li>` 
+    because we can't add an event listener to each of the 
+    shopping list items so we can run a function (delete) when the
+    user clicks those items 
+  */
+  
+  
+
+  //step 1: create a new element and specify what that elemnt must be
+  let newEl = document.createElement("li")
+
+  //step 2: give the new element some text content
+  newEl.textContent = itemValue
+
+  /*
+  Step 3: place the newly created element into its parent 
+  element (the shopping list element)
+  */
+
+  shoppingListEl.append(newEl)
 } 
