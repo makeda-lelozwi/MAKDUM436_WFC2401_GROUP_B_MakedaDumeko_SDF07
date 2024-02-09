@@ -25,14 +25,16 @@ addButtonEl.addEventListener("click", function() {
 
 onValue(shoppingListInDB, function(snapshot) {
   //using the Object to turn the snapshot into an array so that we can run a for loop on it
-  let itemsArray = Object.values(snapshot.val())
+  //changed itemsArray from Object.values to Object.entries
+  let itemsArray = Object.entries(snapshot.val())
   
   clearShoppingListEl()
-  
 
   //new bug: duplication of last added shoppingItem
 
   for (let i = 0; i < itemsArray.length; i++) {
+    letcurrentItem = itemsArray[i]
+
     appendItemToShoppingListEl(itemsArray[i])
   }
 })
