@@ -13,6 +13,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
+//an object
 const appSettings = {
   databaseURL: "https://realtime-database-62fa4-default-rtdb.asia-southeast1.firebasedatabase.app/"
 }
@@ -21,19 +22,25 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const shoppingListInDB = ref(database, "shoppingList")
 
+//DOM - referencing HTML
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
 
+
+//                            event-type, callback function
 addButtonEl.addEventListener("click", function() {
   let inputValue = inputFieldEl.value
 
   push(shoppingListInDB, inputValue)
 
+  //utility function
   clearInputFieldEl()
   //removing this line fixes the duplication bug
   // appendItemToShoppingListEl(inputValue) 
 })
+
+//detects any changes to our database 
 
 onValue(shoppingListInDB, function(snapshot) {
   if (snapshot.exists()) {
@@ -68,7 +75,8 @@ function clearShoppingListEl() {
 function clearInputFieldEl() {
   inputFieldEl.value = ""
 }
-
+//append is more on DOM manipulation side 
+//rendering information on the screen
 function appendItemToShoppingListEl(item) {
   /* we need to refactor: 
     shoppingListEl.innerHTML += `<li>${itemValue}</li>` 
