@@ -1,3 +1,15 @@
+/*New Methods:
+  - initialise app
+  - onValue (has call-back to a snapshot)
+
+
+  JS Concepts
+  - multidimensional arrays
+  - know diff. // object entries, object value and object key
+  - snapshot = screenshot of the info on the database that you want to use
+  - empty string 
+*/
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
@@ -27,6 +39,10 @@ onValue(shoppingListInDB, function(snapshot) {
   if (snapshot.exists()) {
 
     let itemsArray = Object.entries(snapshot.val())
+    //this will convert an object into an array
+    // 0      ,     1
+    //[[T,B,C][12, 13, 14]]
+    //need a for loop to be able to look into the array
     
     clearShoppingListEl()
 
