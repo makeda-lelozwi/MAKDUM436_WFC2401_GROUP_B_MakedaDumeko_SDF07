@@ -6,7 +6,7 @@
   JS Concepts
   - multidimensional arrays
   - know diff. // object entries, object value and object key
-  - snapshot = screenshot of the info on the database that you want to use
+  - snapshot = screenshot at a point in time of the info on the database that you might want to use
   - empty string 
 */
 
